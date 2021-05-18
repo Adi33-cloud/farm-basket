@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from "./Header";
+import Entry from "./Entry";
+import InputArea from "./InputArea";
 
 function App() {
+
+  const [entryArray, setEntryArray] = useState([]);
+
+  function addEntry(newEntry) {
+    setEntryArray(prevEntryArray => {
+      return [...prevEntryArray, newEntry];
+    });
+  }
+
+  function deleteEntry(id) {
+    setEntryArray(prevEntryArray => {
+      return prevEntryArray.filter((entryItem, index) => {
+        return index !== id;
+      });
+    });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <InputArea onAdd={addEntry} />
+
+      {entryArray.map((entryItem, index) => {
+        return (
+          <Entry
+            key={index}
+            id={index}
+            name={entryItem.basket}
+            price={entryItem.price}
+            onDelete={deleteEntry}
+          />
+        );
+      })}
+
     </div>
   );
 }
