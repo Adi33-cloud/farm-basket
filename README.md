@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Note: For input field "Fruit Basket Type" type Apple Basket, Orange Basket, Cherry Basket, Peach Basket, Strawberry Basket, Blueberry Basket or Raspberry Basket to have an image of the proper basket displayed. An empty basket will be the image if that fruit basket is not in the database. 
+
 ## Available Scripts
 
 In the project directory, you can run:
